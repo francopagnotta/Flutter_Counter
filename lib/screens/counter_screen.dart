@@ -44,19 +44,36 @@ class _CounterScreenState extends State<CounterScreen> {
         children: [
           FloatingActionButton(
               child: const Icon(
-                Icons.add,
-              ),
-              // ignore: avoid_print
-              onPressed: () {
-                setState(() => counter++);
-              }),
-          FloatingActionButton(
-              child: const Icon(
                 Icons.remove,
               ),
               // ignore: avoid_print
               onPressed: () {
-                setState(() => counter--);
+                counter--;
+                setState(() => {}); // anonymous function that set the state.
+              }),
+          const SizedBox(
+            width: 20,
+          ),
+          FloatingActionButton(
+              child: const Icon(
+                Icons.restart_alt,
+              ),
+              // ignore: avoid_print
+              onPressed: () {
+                counter = 0;
+                setState(() => {});
+              }),
+          const SizedBox(
+            width: 20,
+          ),
+          FloatingActionButton(
+              child: const Icon(
+                Icons.add,
+              ),
+              // ignore: avoid_print
+              onPressed: () {
+                counter++;
+                setState(() => {});
               }),
         ],
       ),
