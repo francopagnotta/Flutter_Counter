@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 
-class CounterScreen extends StatelessWidget {
+class CounterScreen extends StatefulWidget {
   //default export, is not necessary write export
-  const CounterScreen(
-      {super.key}); // Class' constructor, It is because it has the class name
+  const CounterScreen({super.key});
+  @override
+  State<CounterScreen> createState() => _CounterScreenState();
+}
 
+class _CounterScreenState extends State<CounterScreen> {
+  int counter = 0;
+  // Class' constructor, It is because it has the class name
   @override
   Widget build(BuildContext context) {
     const TextStyle fontSize = TextStyle(fontSize: 18);
-    int counter = 0;
 
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Counter Screen',
+          'Counter Screen ',
           textAlign: TextAlign.center,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
@@ -41,11 +45,9 @@ class CounterScreen extends StatelessWidget {
           ),
           // ignore: avoid_print
           onPressed: () {
-            counter++;
-            // ignore: avoid_print
-            print(counter);
+            setState(() => counter++);
           }),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }
