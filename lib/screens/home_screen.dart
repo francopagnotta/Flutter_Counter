@@ -7,20 +7,41 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const TextStyle fontSize = TextStyle(fontSize: 18);
+
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Home Screen'),
-          elevation: 10,
+      appBar: AppBar(
+        title: const Text(
+          'Flutter App',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            // crossAxisAlignment: CrossAxisAlignment.center, It is not necessary if we are using the Center Widget before in line 15
-            children: const <Widget>[
-              Text('Clicks Counter'),
-              Text('0'),
-            ],
-          ),
-        ));
+        elevation: 10,
+        centerTitle: true,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const <Widget>[
+            Text(
+              'Text 1',
+              style: fontSize,
+            ),
+            Text(
+              'Text 2',
+              style: fontSize,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(
+          Icons.add,
+        ),
+        // ignore: avoid_print
+        onPressed: () => print('action btn'),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+    );
   }
 }
