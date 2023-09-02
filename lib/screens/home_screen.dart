@@ -8,11 +8,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const TextStyle fontSize = TextStyle(fontSize: 18);
+    int counter = 0;
 
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Flutter App',
+          'Home Screen',
           textAlign: TextAlign.center,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
@@ -22,25 +23,28 @@ class HomeScreen extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text(
-              'Text 1',
+          children: <Widget>[
+            const Text(
+              'Number of clicks',
               style: fontSize,
             ),
             Text(
-              'Text 2',
+              counter.toString(),
               style: fontSize,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(
-          Icons.add,
-        ),
-        // ignore: avoid_print
-        onPressed: () => print('action btn'),
-      ),
+          child: const Icon(
+            Icons.add,
+          ),
+          // ignore: avoid_print
+          onPressed: () {
+            counter++;
+            // ignore: avoid_print
+            print(counter);
+          }),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
