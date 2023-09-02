@@ -29,7 +29,7 @@ class _CounterScreenState extends State<CounterScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'Text 1',
+              'Number of clicks',
               style: fontSize,
             ),
             Text(
@@ -39,15 +39,28 @@ class _CounterScreenState extends State<CounterScreen> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-          child: const Icon(
-            Icons.add,
-          ),
-          // ignore: avoid_print
-          onPressed: () {
-            setState(() => counter++);
-          }),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          FloatingActionButton(
+              child: const Icon(
+                Icons.add,
+              ),
+              // ignore: avoid_print
+              onPressed: () {
+                setState(() => counter++);
+              }),
+          FloatingActionButton(
+              child: const Icon(
+                Icons.remove,
+              ),
+              // ignore: avoid_print
+              onPressed: () {
+                setState(() => counter--);
+              }),
+        ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
