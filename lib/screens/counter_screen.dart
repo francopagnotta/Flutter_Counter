@@ -12,7 +12,7 @@ class _CounterScreenState extends State<CounterScreen> {
   // Class' constructor, It is because it has the class name
   @override
   Widget build(BuildContext context) {
-    const TextStyle fontSize = TextStyle(fontSize: 18);
+    const TextStyle fontSize = TextStyle(fontSize: 30);
 
     return Scaffold(
       appBar: AppBar(
@@ -39,45 +39,35 @@ class _CounterScreenState extends State<CounterScreen> {
           ],
         ),
       ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          FloatingActionButton(
-              child: const Icon(
-                Icons.remove,
-              ),
-              // ignore: avoid_print
-              onPressed: () {
-                counter--;
-                setState(() => {}); // anonymous function that set the state.
-              }),
-          const SizedBox(
-            width: 20,
-          ),
-          FloatingActionButton(
-              child: const Icon(
-                Icons.restart_alt,
-              ),
-              // ignore: avoid_print
-              onPressed: () {
-                counter = 0;
-                setState(() => {});
-              }),
-          const SizedBox(
-            width: 20,
-          ),
-          FloatingActionButton(
-              child: const Icon(
-                Icons.add,
-              ),
-              // ignore: avoid_print
-              onPressed: () {
-                counter++;
-                setState(() => {});
-              }),
-        ],
-      ),
+      floatingActionButton: const CustomFloatingActionButtons(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+    );
+  }
+}
+
+class CustomFloatingActionButtons extends StatelessWidget {
+  const CustomFloatingActionButtons({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: const [
+        FloatingActionButton(
+          onPressed: null,
+          child: Icon(Icons.remove),
+        ),
+        FloatingActionButton(
+          onPressed: null,
+          child: Icon(Icons.restart_alt),
+        ),
+        FloatingActionButton(
+          onPressed: null,
+          child: Icon(Icons.add),
+        ),
+      ],
     );
   }
 }
