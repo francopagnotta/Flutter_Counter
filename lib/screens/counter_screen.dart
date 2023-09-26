@@ -9,6 +9,22 @@ class CounterScreen extends StatefulWidget {
 
 class _CounterScreenState extends State<CounterScreen> {
   int counter = 0;
+
+  void increase() {
+    counter++;
+    setState(() {});
+  }
+
+  void decrease() {
+    counter--;
+    setState(() {});
+  }
+
+  void restart() {
+    counter = 0;
+    setState(() {});
+  }
+
   // Class' constructor, It is because it has the class name
   @override
   Widget build(BuildContext context) {
@@ -39,33 +55,42 @@ class _CounterScreenState extends State<CounterScreen> {
           ],
         ),
       ),
-      floatingActionButton: const CustomFloatingActionButtons(),
+      floatingActionButton: CustomFloatingActionButtons(
+        increaseFn: increase,
+        decreaseFn: decrease,
+        resetFn: restart,
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
 
 class CustomFloatingActionButtons extends StatelessWidget {
+  final Function increaseFn, decreaseFn, resetFn;
+
   const CustomFloatingActionButtons({
     Key? key,
+    required this.increaseFn,
+    required this.decreaseFn,
+    required this.resetFn,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: const [
+      children: [
         FloatingActionButton(
-          onPressed: null,
-          child: Icon(Icons.remove),
+          onPressed: () => decreaseFn(),
+          child: const Icon(Icons.remove),
         ),
         FloatingActionButton(
-          onPressed: null,
-          child: Icon(Icons.restart_alt),
+          onPressed: () => resetFn(),
+          child: const Icon(Icons.restart_alt),
         ),
         FloatingActionButton(
-          onPressed: null,
-          child: Icon(Icons.add),
+          onPressed: () => increaseFn(),
+          child: const Icon(Icons.add),
         ),
       ],
     );
